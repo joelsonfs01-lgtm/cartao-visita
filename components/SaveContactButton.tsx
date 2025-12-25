@@ -3,8 +3,29 @@ import { UserPlus, Download } from 'lucide-react';
 
 export const SaveContactButton: React.FC = () => {
   const handleSave = () => {
-    // In a real app, this would trigger a .vcf download
-    alert("Simulação: Contato 'Roberto Almeida' salvo na agenda.");
+    // Conteúdo real do vCard para salvar na agenda
+    const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Roberto Almeida
+N:Almeida;Roberto;;;
+ORG:Luxury Estate
+TITLE:Corretor de Imóveis de Luxo
+TEL;TYPE=CELL:+5511999999999
+EMAIL;TYPE=WORK:contato@robertoalmeida.com
+URL:https://www.robertoalmeida.com
+NOTE:Transformando sonhos em endereços exclusivos.
+END:VCARD`;
+
+    // Cria um blob com os dados e força o download
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'contato_roberto_almeida.vcf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
@@ -25,6 +46,7 @@ export const SaveContactButton: React.FC = () => {
           transform transition-all duration-300
           hover:scale-[1.02] active:scale-95
           group
+          cursor-pointer
         "
       >
         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>

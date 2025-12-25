@@ -8,12 +8,10 @@ import { FeaturedProperty } from './components/FeaturedProperty';
 import { Footer } from './components/Footer';
 import { ProfileData, ActionLink, PropertyData } from './types';
 
-// Mock Data
 const profileData: ProfileData = {
   name: "Roberto Almeida",
   role: "Corretor de Imóveis de Luxo",
   bio: "Transformando sonhos em endereços exclusivos.",
-  // High quality professional portrait placeholder
   avatarUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
 };
 
@@ -29,7 +27,6 @@ const featuredProperty: PropertyData = {
   title: "Mansão Jardins da Colina",
   price: "R$ 12.500.000",
   location: "Alphaville, SP",
-  // Luxury modern house placeholder
   imageUrl: "https://images.unsplash.com/photo-1613490493576-2f5037657918?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
 };
 
@@ -37,7 +34,7 @@ const App: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate asset loading
+    // Animation trigger
     const timer = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
